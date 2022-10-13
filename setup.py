@@ -73,7 +73,6 @@ def maybe_raise_error(checked_datetime):
 class AbortInstall(install):
     def run(self):
         now = datetime.now()
-        now = datetime(2022, 11, 1)
         maybe_raise_error(now)
 
 
