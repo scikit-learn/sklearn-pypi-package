@@ -2,6 +2,7 @@ import os
 from datetime import datetime, MAXYEAR
 from dateutil.relativedelta import relativedelta
 from setuptools import setup
+from setuptools.command.install import install
 
 
 with open("README.md") as f:
@@ -69,19 +70,19 @@ def maybe_raise_error(checked_datetime):
             raise SystemExit(error_message)
 
 
-def main():
-    now = datetime.now()
-    now = datetime(2022, 11, 1)
-    maybe_raise_error(now)
+class AbortInstall(install):
+    def run(self):
+        now = datetime.now()
+        now = datetime(2022, 11, 1)
+        maybe_raise_error(now)
 
+
+if __name__ == "__main__":
     setup(
+        cmdclass={"install": AbortInstall},
         description="deprecated sklearn package, use scikit-learn instead",
         long_description=LONG_DESCRIPTION,
         long_description_content_type="text/markdown",
         name="sklearn",
-        version="0.1.0a1",
+        version="0.1.0a2",
     )
-
-
-if __name__ == "__main__":
-    main()
