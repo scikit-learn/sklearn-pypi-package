@@ -1,6 +1,5 @@
 import os
 from datetime import datetime, MAXYEAR
-from dateutil.relativedelta import relativedelta
 from setuptools import setup
 from setuptools.command.install import install
 
@@ -26,8 +25,9 @@ def maybe_raise_error(checked_datetime):
             "because SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=False is set"
         )
 
-    start_date = datetime(2022, 11, 1)
-    all_start_dates = [start_date + relativedelta(months=2 * i) for i in range(7)]
+    all_start_dates = [datetime(2022, 11, 1)] + [
+        datetime(2023, 2 * i + 1, 1) for i in range(6)
+    ]
     date_in_the_far_future = datetime(MAXYEAR, 12, 31, 23, 59, 59)
     all_end_dates = all_start_dates[1:] + [date_in_the_far_future]
     all_check_functions = [
