@@ -7,15 +7,15 @@ This repo implements brownout for the deprecated `sklearn` package on PyPI.
 The following table shows the dates and time window, where an exception will be
 raised if you attempt to install the `sklearn` package from PyPI.
 
-| Dates                             | Window(s)                      |
-|-----------------------------------|--------------------------------|
-| 2022 November 1st - December 30th | :00-:05 every hour             |
-| 2023 January 1st - February 28th  | :00-:10 every hour             |
-| 2023 March 1st - April 30th       | :00-:15 every hour             |
-| 2023 May 1st - June 30th          | :00-:10 and :30-:40 every hour |
-| 2023 July 1st - August 31st       | :00-:15 and :30-45 every hour  |
-| 2023 September 1st - October 30th | :00-:20 and :00-50 every hour  |
-| 2023 November 1st onwards         | always raise an exception      |
+| Dates                                 | Window(s)                      |
+|---------------------------------------|--------------------------------|
+| 2022 December 1st - 2023 January 31st | :00-:05 every hour             |
+| 2023 February 1st - March 31st        | :00-:10 every hour             |
+| 2023 April 1st - May 31st             | :00-:15 every hour             |
+| 2023 June 1st - July 31st             | :00-:10 and :30-:40 every hour |
+| 2023 August 1st - September 30th      | :00-:15 and :30-45 every hour  |
+| 2023 October 1st - November 30th      | :00-:20 and :00-50 every hour  |
+| 2023 December 1st onwards             | always raise an exception      |
 
 # How to fix the error for the main use cases
 

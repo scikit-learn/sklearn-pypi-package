@@ -25,8 +25,8 @@ def maybe_raise_error(checked_datetime):
             "because SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=False is set"
         )
 
-    all_start_dates = [datetime(2022, 11, 1)] + [
-        datetime(2023, 2 * i + 1, 1) for i in range(6)
+    all_start_dates = [datetime(2022, 12, 1)] + [
+        datetime(2023, 2 * i, 1) for i in range(1, 7)
     ]
     date_in_the_far_future = datetime(MAXYEAR, 12, 31, 23, 59, 59)
     all_end_dates = all_start_dates[1:] + [date_in_the_far_future]
