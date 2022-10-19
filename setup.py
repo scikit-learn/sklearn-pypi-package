@@ -1,11 +1,40 @@
 import os
 from datetime import datetime, MAXYEAR
+from collections import namedtuple
+
 from setuptools import setup
 from setuptools.command.install import install
 
 
 with open("README.md") as f:
     LONG_DESCRIPTION = f.read()
+
+
+def get_brownout_schedule():
+    all_start_dates = [datetime(2022, 12, 1)] + [
+        datetime(2023, 2 * i, 1) for i in range(1, 7)
+    ]
+    date_in_the_far_future = datetime(MAXYEAR, 12, 31, 23, 59, 59)
+    all_end_dates = all_start_dates[1:] + [date_in_the_far_future]
+    all_check_functions = [
+        lambda dt: dt.minute < 5,
+        lambda dt: dt.minute < 10,
+        lambda dt: dt.minute < 15,
+        lambda dt: (dt.minute < 10) or (30 <= dt.minute < 40),
+        lambda dt: (dt.minute < 15) or (30 <= dt.minute < 45),
+        lambda dt: (dt.minute < 20) or (30 <= dt.minute < 50),
+        lambda dt: True,
+    ]
+
+    CheckedDatetimeWindow = namedtuple(
+        "CheckedDatetimeWindow", "start_datetime end_datetime check_function"
+    )
+    brownout_schedule = [
+        CheckedDatetimeWindow(*each)
+        for each in zip(all_start_dates, all_end_dates, all_check_functions)
+    ]
+
+    return brownout_schedule
 
 
 def maybe_raise_error(checked_datetime):
@@ -24,22 +53,6 @@ def maybe_raise_error(checked_datetime):
             "Refusing to install the deprecated sklearn package, "
             "because SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=False is set"
         )
-
-    all_start_dates = [datetime(2022, 12, 1)] + [
-        datetime(2023, 2 * i, 1) for i in range(1, 7)
-    ]
-    date_in_the_far_future = datetime(MAXYEAR, 12, 31, 23, 59, 59)
-    all_end_dates = all_start_dates[1:] + [date_in_the_far_future]
-    all_check_functions = [
-        lambda dt: dt.minute < 5,
-        lambda dt: dt.minute < 10,
-        lambda dt: dt.minute < 15,
-        lambda dt: (dt.minute < 10) or (30 < dt.minute < 40),
-        lambda dt: (dt.minute < 15) or (30 < dt.minute < 45),
-        lambda dt: (dt.minute < 20) or (30 < dt.minute < 50),
-        lambda dt: True,
-    ]
-    brownout_schedule = zip(all_start_dates, all_end_dates, all_check_functions)
 
     error_message = "\n".join(
         [
@@ -63,6 +76,8 @@ def maybe_raise_error(checked_datetime):
             "https://github.com/scikit-learn/sklearn-pypi-package/issues/new",
         ]
     )
+
+    brownout_schedule = get_brownout_schedule()
     for start_date, end_date, check_function in brownout_schedule:
         if (start_date <= checked_datetime < end_date) and check_function(
             checked_datetime
