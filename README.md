@@ -30,7 +30,7 @@ raised if you attempt to install the `sklearn` package from PyPI.
 
 # Reason for the deprecation
 
-`sklearn` package on PyPI exists to prevent malicious actors to use the
+`sklearn` package on PyPI exists to prevent malicious actors from using the
 `sklearn` package, since `sklearn` (the import name) and `scikit-learn` (the
 project name) are sometimes used interchangeably. `scikit-learn` is the actual
 package name and should be used with pip, e.g. for:
