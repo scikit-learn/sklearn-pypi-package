@@ -68,7 +68,7 @@ def maybe_raise_error(checked_datetime):
             "- replace sklearn by scikit-learn in your pip requirements files",
             "  (requirements.txt, setup.py, setup.cfg, Pipfile, etc ...)",
             "- if the sklearn package is used by one of your dependencies, ",
-            "  it would be great if you take some time to track which pakage uses ",
+            "  it would be great if you take some time to track which package uses ",
             "  sklearn instead of scikit-learn and report it to their issue tracker",
             "- as last resort, set the environment variable ",
             "  SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True to avoid this error",
