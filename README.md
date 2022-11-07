@@ -16,7 +16,7 @@ package on PyPI.
 
 # Brownout schedule
 
-The following table shows the dates and time window, where an exception will be
+The following table shows the dates and time windows, where an exception will be
 raised if you attempt to install the `sklearn` package from PyPI.
 
 | Dates                                 | Window(s)                      |
