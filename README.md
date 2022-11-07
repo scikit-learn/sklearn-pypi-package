@@ -10,7 +10,7 @@ This repo implements the brownout for deprecating the `sklearn` package on PyPI.
 - if the `sklearn` package is used by one of your dependencies
   it would be great if you take some time to track which package uses
   `sklearn` instead of `scikit-learn` and report it to their issue tracker
-- as last resort, set the environment variable ,
+- as a last resort, set the environment variable
   `SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True` to avoid this error
 
 # Brownout schedule
