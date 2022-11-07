@@ -1,6 +1,17 @@
 # Goal
 
-This repo implements brownout for the deprecated `sklearn` package on PyPI.
+This repo implements the brownout for deprecating the `sklearn` package on PyPI.
+
+# How to fix the error for the main use cases
+
+- use `pip install scikit-learn` rather than `pip install sklearn`
+- replace `sklearn` by `scikit-learn` in your pip requirements files
+  (`requirements.txt`, `setup.py,` `setup.cfg`, `Pipfile`, etc ...)
+- if the `sklearn` package is used by one of your dependencies
+  it would be great if you take some time to track which package uses
+  `sklearn` instead of `scikit-learn` and report it to their issue tracker
+- as last resort, set the environment variable ,
+  `SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True` to avoid this error
 
 # Brownout schedule
 
@@ -17,16 +28,20 @@ raised if you attempt to install the `sklearn` package from PyPI.
 | 2023 October 1st - November 30th      | :00-:20 and :00-50 every hour  |
 | 2023 December 1st onwards             | always raise an exception      |
 
-# How to fix the error for the main use cases
+# Testing whether a package will be affected by the `sklearn` deprecation
 
-- use `pip install scikit-learn` rather than `pip install sklearn`
-- replace `sklearn` by `scikit-learn` in your pip requirements files
-  (`requirements.txt`, `setup.py,` `setup.cfg`, `Pipfile`, etc ...)
-- if the `sklearn` package is used by one of your dependencies
-  it would be great if you take some time to track which package uses
-  `sklearn` instead of `scikit-learn` and report it to their issue tracker
-- as last resort, set the environment variable ,
-  `SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True` to avoid this error
+If you want to test whether a package has `sklearn` in its dependencies
+independently of the brownout schedule, you can do:
+
+```
+SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=False \
+    pip install package-to-test-goes-here
+```
+
+If you get an error that means that the package has `sklearn` in one of its
+dependencies. It would be greatly appreciated if you track which package it is,
+and if you report it to the appropriate project issue tracker to make them
+aware of the `sklearn` deprecation.
 
 # Reason for the deprecation
 
@@ -52,17 +67,3 @@ implemented:
   list` output prompting questions like "why do I have scikit-learn 1.1.1 and
   sklearn 0.0, and what does it even mean"?
 
-# Testing whether a package will be affected by the `sklearn` deprecation
-
-If you want to test whether a package has `sklearn` in its dependencies
-independently of the brownout schedule, you can do:
-
-```
-SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=False \
-    pip install package-to-test-goes-here
-```
-
-If you get an error that means that the package has `sklearn` in one of its
-dependencies. It would be greatly appreciated if you track which package it is,
-and if you report it to the appropriate project issue tracker to make them
-aware of the `sklearn` deprecation.

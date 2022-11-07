@@ -57,23 +57,23 @@ def maybe_raise_error(checked_datetime):
 
     error_message = "\n".join(
         [
-            "The 'sklearn' PyPI package is deprecated, use 'scikit-learn' ",
+            "The 'sklearn' PyPI package is deprecated, use 'scikit-learn'",
             "rather than 'sklearn' for pip commands. ",
-            "",
-            "The brownout schedule for sklearn deprecation can be found at ",
-            "https://github.com/scikit-learn/sklearn-pypi-package#brownout-schedule",
             "",
             "Here is how to fix this error in the main use cases:",
             "- use 'pip install scikit-learn' rather than 'pip install sklearn'",
-            "- replace sklearn by scikit-learn in your pip requirements files",
+            "- replace 'sklearn' by 'scikit-learn' in your pip requirements files",
             "  (requirements.txt, setup.py, setup.cfg, Pipfile, etc ...)",
-            "- if the sklearn package is used by one of your dependencies, ",
-            "  it would be great if you take some time to track which package uses ",
-            "  sklearn instead of scikit-learn and report it to their issue tracker",
-            "- as last resort, set the environment variable ",
+            "- if the 'sklearn' package is used by one of your dependencies,",
+            "  it would be great if you take some time to track which package uses",
+            "  'sklearn' instead of 'scikit-learn' and report it to their issue tracker",
+            "- as a last resort, set the environment variable",
             "  SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True to avoid this error",
             "",
-            "If the previous advice does not cover your use case, feel free to report it at:",
+            "More information is available at",
+            "https://github.com/scikit-learn/sklearn-pypi-package",
+            "",
+            "If the previous advice does not cover your use case, feel free to report it at",
             "https://github.com/scikit-learn/sklearn-pypi-package/issues/new",
         ]
     )
@@ -89,11 +89,11 @@ def maybe_raise_error(checked_datetime):
 if __name__ == "__main__":
     # We allow python setup.py sdist to always work to be able to create the
     # sdist and upload it to PyPI
-    sdist_mode = len(sys.argv) == 2 and sys.argv[1] == 'sdist'
+    sdist_mode = len(sys.argv) == 2 and sys.argv[1] == "sdist"
 
     if not sdist_mode:
         # environment variable for test purposes
-        datetime_str = os.getenv('SKLEARN_DEPRECATED_SKLEARN_CHECKED_DATETIME', None)
+        datetime_str = os.getenv("SKLEARN_DEPRECATED_SKLEARN_CHECKED_DATETIME", None)
         if datetime_str is None:
             checked_datetime = datetime.now()
         else:
