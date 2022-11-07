@@ -58,12 +58,12 @@ At the time of writing (October 2022) `sklearn` downloads is about 1/5 of the
 
 There are some edge cases with the way the PyPI `sklearn` package is
 implemented:
-- `pip install sklearn==1.1.1` will say that the 1.1.1 version does not exist,
+- `pip install sklearn==1.1.3` will say that the 1.1.3 version does not exist,
   which is confusing. The only available version at the time of writing of
   `sklearn` is 0.0.
 - `pip uninstall sklearn` will actually not uninstall `scikit-learn`, you can
   still do `import sklearn` afterwards
 - it can be confusing to have both `sklearn` and `scikit-learn` in the `pip
-  list` output prompting questions like "why do I have scikit-learn 1.1.1 and
+  list` output prompting questions like "why do I have scikit-learn 1.1.3 and
   sklearn 0.0, and what does it even mean"?
 
