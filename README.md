@@ -1,6 +1,7 @@
 # Goal
 
-This repo implements the brownout for deprecating the `sklearn` package on PyPI.
+This repo implements the brownout strategy for deprecating the `sklearn`
+package on PyPI.
 
 # How to fix the error for the main use cases
 
@@ -64,6 +65,6 @@ implemented:
 - `pip uninstall sklearn` will actually not uninstall `scikit-learn`, you can
   still do `import sklearn` afterwards
 - it can be confusing to have both `sklearn` and `scikit-learn` in the `pip
-  list` output prompting questions like "why do I have scikit-learn 1.1.3 and
+  list` output, prompting questions like "why do I have scikit-learn 1.1.3 and
   sklearn 0.0, and what does it even mean"?
 
