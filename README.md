@@ -29,7 +29,7 @@ raised if you attempt to install the `sklearn` package from PyPI.
 | 2023 October 1st - November 30th      | :00-:20 and :00-50 every hour  |
 | 2023 December 1st onwards             | always raise an exception      |
 
-# Testing whether a package will be affected by the `sklearn` deprecation
+# How to test whether a package will be affected by the `sklearn` deprecation
 
 If you want to test whether a package has `sklearn` in its dependencies
 independently of the brownout schedule, you can do:
