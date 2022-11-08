@@ -25,8 +25,8 @@ raised if you attempt to install the `sklearn` package from PyPI.
 | 2023 February 1st - March 31st        | :00-:10 every hour             |
 | 2023 April 1st - May 31st             | :00-:15 every hour             |
 | 2023 June 1st - July 31st             | :00-:10 and :30-:40 every hour |
-| 2023 August 1st - September 30th      | :00-:15 and :30-45 every hour  |
-| 2023 October 1st - November 30th      | :00-:20 and :00-50 every hour  |
+| 2023 August 1st - September 30th      | :00-:15 and :30-:45 every hour |
+| 2023 October 1st - November 30th      | :00-:20 and :30-:50 every hour |
 | 2023 December 1st onwards             | always raise an exception      |
 
 # How to test whether a package will be affected by the `sklearn` deprecation
