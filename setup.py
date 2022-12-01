@@ -2,10 +2,21 @@ import os
 import sys
 from datetime import datetime, MAXYEAR
 from collections import namedtuple
+import setuptools
 
-from setuptools import setup
-from setuptools.command.install import install
+try:
+    from wheel.bdist_wheel import bdist_wheel as _bdist_wheel
 
+    class bdist_wheel(_bdist_wheel):
+        def run(self):
+            raise setuptools.errors.ClassError(
+                "This is an expected error. Buidling wheel is disabled for the sklearn package to avoid client-side pip caching."
+            )
+
+    cmdclass = {"bdist_wheel": bdist_wheel}
+
+except ImportError:
+    cmdclass = {}
 
 with open("README.md") as f:
     LONG_DESCRIPTION = f.read()
@@ -101,10 +112,11 @@ if __name__ == "__main__":
 
         maybe_raise_error(checked_datetime)
 
-    setup(
+    setuptools.setup(
         description="deprecated sklearn package, use scikit-learn instead",
         long_description=LONG_DESCRIPTION,
         long_description_content_type="text/markdown",
         name="sklearn",
         version="0.0.post1",
+        cmdclass=cmdclass,
     )
