@@ -11,8 +11,10 @@ try:
         def run(self):
             message = "\n".join(
                 [
-                    "This is an expected error. Building wheel is disabled for the deprecated sklearn PyPI package to avoid pip caching.",
-                    "For more details about the sklearn PyPI package deprecation, see https://github.com/scikit-learn/sklearn-pypi-package"
+                    "This is an expected error. Building wheel is disabled "
+                    "for the deprecated sklearn PyPI package to avoid pip caching.",
+                    "For more details about the sklearn PyPI package deprecation, see:",
+                    "https://github.com/scikit-learn/sklearn-pypi-package",
                 ]
             )
             raise setuptools.errors.ClassError(message)
