@@ -10,7 +10,7 @@ try:
     class bdist_wheel(_bdist_wheel):
         def run(self):
             raise setuptools.errors.ClassError(
-                "This is an expected error. Buidling wheel is disabled for the sklearn package to avoid client-side pip caching."
+                "This is an expected error. Building wheel is disabled for the sklearn package to avoid client-side pip caching."
             )
 
     cmdclass = {"bdist_wheel": bdist_wheel}
