@@ -9,9 +9,13 @@ try:
 
     class bdist_wheel(_bdist_wheel):
         def run(self):
-            raise setuptools.errors.ClassError(
-                "This is an expected error. Building wheel is disabled for the sklearn package to avoid client-side pip caching."
+            message = "\n".join(
+                [
+                    "This is an expected error. Building wheel is disabled for the deprecated sklearn PyPI package to avoid pip caching.",
+                    "For more details about the sklearn PyPI package deprecation, see https://github.com/scikit-learn/sklearn-pypi-package"
+                ]
             )
+            raise setuptools.errors.ClassError(message)
 
     cmdclass = {"bdist_wheel": bdist_wheel}
 
