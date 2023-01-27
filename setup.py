@@ -2,27 +2,9 @@ import os
 import sys
 from datetime import datetime, MAXYEAR
 from collections import namedtuple
-import setuptools
 
-try:
-    from wheel.bdist_wheel import bdist_wheel as _bdist_wheel
+from setuptools import setup
 
-    class bdist_wheel(_bdist_wheel):
-        def run(self):
-            message = "\n".join(
-                [
-                    "This is an expected error. Building wheel is disabled "
-                    "for the deprecated sklearn PyPI package to avoid pip caching.",
-                    "For more details about the sklearn PyPI package deprecation, see:",
-                    "https://github.com/scikit-learn/sklearn-pypi-package",
-                ]
-            )
-            raise setuptools.errors.ClassError(message)
-
-    cmdclass = {"bdist_wheel": bdist_wheel}
-
-except ImportError:
-    cmdclass = {}
 
 with open("README.md") as f:
     LONG_DESCRIPTION = f.read()
@@ -118,11 +100,10 @@ if __name__ == "__main__":
 
         maybe_raise_error(checked_datetime)
 
-    setuptools.setup(
+    setup(
         description="deprecated sklearn package, use scikit-learn instead",
         long_description=LONG_DESCRIPTION,
         long_description_content_type="text/markdown",
         name="sklearn",
         version="0.0.post2",
-        cmdclass=cmdclass,
     )
