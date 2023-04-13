@@ -1,7 +1,6 @@
-# Goal
+# ⚠️⚠️⚠️ Summary ⚠️⚠️⚠️
 
-This repo implements the brownout strategy for deprecating the `sklearn`
-package on PyPI.
+⚠️⚠️⚠️ The **`sklearn` PyPI package is deprecated use `scikit-learn` instead** ⚠️⚠️⚠️
 
 # How to fix the error for the main use cases
 
