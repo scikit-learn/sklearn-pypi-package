@@ -105,5 +105,5 @@ if __name__ == "__main__":
         long_description=LONG_DESCRIPTION,
         long_description_content_type="text/markdown",
         name="sklearn",
-        version="0.0.post4",
+        version="0.0.post5",
     )
