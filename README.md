@@ -6,7 +6,7 @@ Note that the `scikit-learn` PyPI package was always the official PyPI package f
 the start of the project: this does not change.
 
 What changes is that the `sklearn` PyPI package which was an empty package with a
-depdendency to `scikit-learn` progressively becomes a package that fails to install
+dependency to `scikit-learn` progressively becomes a package that fails to install
 instead. See this end of this page to see the reasons of this change.
 
 # How to fix the error for the main use cases
