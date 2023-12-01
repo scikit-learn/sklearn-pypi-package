@@ -45,7 +45,7 @@ an error.
 The table shows the historical brownout schedule that was used between 2022
 December 1st and 2023 December 1st, in order to get people aware of the
 deprecation and give them some time to adapt. During these dates and time
-windows, an exception was raised if you attempt to install the `sklearn`
+windows, an exception was raised if you attempted to install the `sklearn`
 package from PyPI.
 
 | Dates                                 | Window(s)                      |
