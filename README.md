@@ -20,36 +20,6 @@ instead. See this end of this page to see the reasons of this change.
 - as a last resort, set the environment variable
   `SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True` to avoid this error
 
-# Brownout schedule
-
-The following table shows the dates and time windows, where an exception will be
-raised if you attempt to install the `sklearn` package from PyPI.
-
-| Dates                                 | Window(s)                      |
-|---------------------------------------|--------------------------------|
-| 2022 December 1st - 2023 January 31st | :00-:05 every hour             |
-| 2023 February 1st - March 31st        | :00-:10 every hour             |
-| 2023 April 1st - May 31st             | :00-:15 every hour             |
-| 2023 June 1st - July 31st             | :00-:10 and :30-:40 every hour |
-| 2023 August 1st - September 30th      | :00-:15 and :30-:45 every hour |
-| 2023 October 1st - November 30th      | :00-:20 and :30-:50 every hour |
-| 2023 December 1st onwards             | always raise an exception      |
-
-# How to test whether a package will be affected by the `sklearn` deprecation
-
-If you want to test whether a package has `sklearn` in its dependencies
-independently of the brownout schedule, you can do:
-
-```
-SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=False \
-    pip install package-to-test-goes-here
-```
-
-If you get an error that means that the package has `sklearn` in one of its
-dependencies. It would be greatly appreciated if you track which package it is,
-and if you report it to the appropriate project issue tracker to make them
-aware of the `sklearn` deprecation.
-
 # Reason for the deprecation
 
 `sklearn` package on PyPI exists to prevent malicious actors from using the
@@ -74,3 +44,23 @@ implemented:
   list` output, prompting questions like "why do I have scikit-learn 1.1.3 and
   sklearn 0.0, and what does it even mean"?
 
+# Historical brownout schedule (from 2022-12-01 to 2023-11-31)
+
+Starting 2023 December 1st, trying to install the `sklearn` PyPI package raises
+an error.
+
+The table shows the historical brownout schedule that was used between 2022
+December 1st and 2023 December 1st, in order to get people aware of the
+deprecation and give them some time to adapt. During these dates and time
+windows, an exception was raised if you attempted to install the `sklearn`
+package from PyPI.
+
+| Dates                                 | Window(s)                      |
+|---------------------------------------|--------------------------------|
+| 2022 December 1st - 2023 January 31st | :00-:05 every hour             |
+| 2023 February 1st - March 31st        | :00-:10 every hour             |
+| 2023 April 1st - May 31st             | :00-:15 every hour             |
+| 2023 June 1st - July 31st             | :00-:10 and :30-:40 every hour |
+| 2023 August 1st - September 30th      | :00-:15 and :30-:45 every hour |
+| 2023 October 1st - November 30th      | :00-:20 and :30-:50 every hour |
+| 2023 December 1st onwards             | always raise an exception      |
