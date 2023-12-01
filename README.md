@@ -37,7 +37,7 @@ implemented:
   list` output, prompting questions like "why do I have scikit-learn 1.1.3 and
   sklearn 0.0, and what does it even mean"?
 
-# Historical brownout schedule (from 2022-12-01 to 2023-12-01)
+# Historical brownout schedule (from 2022-12-01 to 2023-11-31)
 
 Starting 2023 December 1st, trying to install the `sklearn` PyPI package raises
 an error.
