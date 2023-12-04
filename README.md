@@ -2,12 +2,16 @@
 
 ⚠️⚠️⚠️ The **`sklearn` PyPI package is deprecated use `scikit-learn` instead** ⚠️⚠️⚠️
 
+See [section below](#how-to-fix-the-error-for-the-main-use-cases) how to fix
+the error for the main use cases.
+
 Note that the `scikit-learn` PyPI package was always the official PyPI package from
 the start of the project: this does not change.
 
-What changes is that the `sklearn` PyPI package which was an empty package with a
-dependency to `scikit-learn` progressively becomes a package that fails to install
-instead. See this end of this page to see the reasons of this change.
+What changes is that the `sklearn` PyPI package which is an empty package with a
+dependency to `scikit-learn` now fails to install.
+See [section below](#reason-for-the-deprecation) that explain the motivations
+behind this change.
 
 # How to fix the error for the main use cases
 
@@ -19,6 +23,9 @@ instead. See this end of this page to see the reasons of this change.
   `sklearn` instead of `scikit-learn` and report it to their issue tracker
 - as a last resort, set the environment variable
   `SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True` to avoid this error
+
+If the previous advice does not cover your use case, feel free to [open an issue](
+https://github.com/scikit-learn/sklearn-pypi-package/issues/new) about it.
 
 # Reason for the deprecation
 
